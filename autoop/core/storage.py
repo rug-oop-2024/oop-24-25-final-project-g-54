@@ -59,6 +59,7 @@ class LocalStorage(Storage):
 
     def save(self, data: bytes, key: str):
         path = self._join_path(key)
+        print(path, key)
         # Ensure parent directories are created
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, 'wb') as f:
