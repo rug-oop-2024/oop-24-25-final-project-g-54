@@ -5,14 +5,26 @@ from glob import glob
 
 
 class NotFoundError(Exception):
-    def __init__(self, path):
+    """
+    Exception raised when a specified path is not found.
+    """
+    def __init__(self, path) -> None:
+        """
+        Initializes the error with the missing path.
+
+        Args:
+            path (str): The path that was not found.
+        """
         super().__init__(f"Path not found: {path}")
 
 
 class Storage(ABC):
+    """
+    An abstract storage interface for saving,loading,deleting and listing data
+    """
 
     @abstractmethod
-    def save(self, data: bytes, path: str):
+    def save(self, data: bytes, path: str) -> None:
         """
         Save data to a given path
         Args:
@@ -33,7 +45,7 @@ class Storage(ABC):
         pass
 
     @abstractmethod
-    def delete(self, path: str):
+    def delete(self, path: str) -> None:
         """
         Delete data at a given path
         Args:
@@ -60,7 +72,7 @@ class LocalStorage(Storage):
     deleting and listing files under a specified base path.
     """
 
-    def __init__(self, base_path: str = "./assets"):
+    def __init__(self, base_path: str = "./assets") -> None:
         """
         Initializes the local storage with
         a base directory path.
@@ -74,7 +86,7 @@ class LocalStorage(Storage):
         if not os.path.exists(self._base_path):
             os.makedirs(self._base_path)
 
-    def save(self, data: bytes, key: str):
+    def save(self, data: bytes, key: str) -> None:
         """
         Saves data to the specified key within the base path.
         Creates any necessary parent directories.
@@ -107,7 +119,7 @@ class LocalStorage(Storage):
         with open(path, 'rb') as f:
             return f.read()
 
-    def delete(self, key: str = "/"):
+    def delete(self, key: str = "/") -> None:
         """
         Deletes the file at the specified key path.
 
@@ -140,7 +152,7 @@ class LocalStorage(Storage):
         return [os.path.relpath(p, self._base_path) for p in keys
                 if os.path.isfile(p)]
 
-    def _assert_path_exists(self, path: str):
+    def _assert_path_exists(self, path: str) -> None:
         """
         Checks if a path exists and raises a NotFoundError if it does not.
 
