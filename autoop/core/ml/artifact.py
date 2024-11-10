@@ -1,4 +1,5 @@
 # In artifact.py
+from typing import Optional
 import base64
 
 
@@ -24,13 +25,10 @@ class Artifact:
         base64_id = base64.b64encode(self.name.encode()).decode()
         return f"{base64_id}_{self.version}"
 
-    def __init__(self,
-                 name=None,
-                 type=None,
-                 asset_path=None,
-                 data=None, tags=None,
-                 version=None, id=None,
-                 metadata=None):
+    def __init__(self, name: str = None, type: str = None,
+                 asset_path: str = None, data: Optional[bytes] = None,
+                 tags: list[str] = None, version: str = None,
+                 metadata: dict = None) -> None:
         """
         Initializes the artifact with specified attributes.
 
@@ -67,7 +65,7 @@ class Artifact:
             raise ValueError("No data available to read.")
         return self.data
 
-    def save(self, data) -> None:
+    def save(self, data: Optional[bytes]) -> None:
         """
         Saves data to the artifact after validating it as bytes.
 
