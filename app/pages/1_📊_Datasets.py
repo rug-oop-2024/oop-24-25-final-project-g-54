@@ -38,6 +38,8 @@ if datasets:
     selected_dataset = next(file for file in datasets if file.name == selected)
 
     if st.button("View Dataset"):
+        asset_path = selected_dataset.asset_path
+        data = pd.read_csv(f"assets/objects/{asset_path}")
         st.write(f"Displaying contents of {selected}:")
         st.dataframe(data)
 
@@ -45,4 +47,4 @@ if datasets:
         automl.registry.delete(selected_dataset.id)
         st.success(f"Dataset '{selected}' deleted successfully.")
         time.sleep(1)
-        st.rerun()
+        st.rerun() 
