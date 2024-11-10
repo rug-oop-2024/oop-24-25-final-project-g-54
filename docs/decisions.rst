@@ -82,7 +82,7 @@ Accepted
 
 To prevent unintended modifications maintaining data integrity of the model's attributes such as type and parameters
 
-**eason:**
+**Reason:**
 
 Getter methods ensure controlled access to parameters which are returned as copies to avoid side effects.
 
