@@ -14,7 +14,7 @@ class Dataset(Artifact):
     including reading from and saving to a DataFrame format.
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Initializes the dataset artifact with a type set to 'dataset'.
 
@@ -28,7 +28,7 @@ class Dataset(Artifact):
 
     @staticmethod
     def from_dataframe(data: pd.DataFrame, name: str, asset_path: str,
-                       version: str = "1_0_0"):
+                       version: str = "1_0_0") -> "Dataset":
         """
         Creates a Dataset instance from a pandas DataFrame.
 

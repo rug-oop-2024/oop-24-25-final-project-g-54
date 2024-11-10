@@ -25,12 +25,12 @@ def get_metric(name: str) -> "Metric":
     """
 
     metrics_map = {
-       "mean_squared_error": MeanSquaredError(),
-       "accuracy": Accuracy(),
-       "macro_precision": MacroPrecision(),
-       "macro_recall": MacroRecall(),
-       "mean_absolute_error": MeanAbsoluteError(),
-       "r-squared": Rsquared()
+        "mean_squared_error": MeanSquaredError(),
+        "accuracy": Accuracy(),
+        "macro_precision": MacroPrecision(),
+        "macro_recall": MacroRecall(),
+        "mean_absolute_error": MeanAbsoluteError(),
+        "r-squared": Rsquared()
     }
 
     if name not in metrics_map:
@@ -56,6 +56,13 @@ class Metric(ABC):
 
     @abstractmethod
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray,) -> float:
+        """method for evaluating metrics
+
+        Args:
+            y_ground (np.ndarray): True Values
+            y_pred (np.ndarray): Predicted Values
+
+        """
         pass
 
 # add here concrete implementations of the Metric class
