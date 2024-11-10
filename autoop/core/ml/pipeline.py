@@ -243,8 +243,7 @@ Pipeline(
             "split": self._split,
             "metrics": self._metrics,
             "model": self._model
-            }
-        )
+        })
 
         serialized_data = data
 
