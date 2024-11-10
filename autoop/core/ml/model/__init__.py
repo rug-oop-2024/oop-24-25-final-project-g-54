@@ -1,5 +1,8 @@
-from autoop.core.ml.model.model import Model
+"""
+This package contains the get model function (i dont use it).
+"""
 
+from autoop.core.ml.model.model import Model
 
 REGRESSION_MODELS = []
 # add your models as str here
