@@ -62,6 +62,8 @@ class Metric(ABC):
 
 
 class MeanSquaredError(Metric):
+    """Class for MeanSquaredError. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Mean Squared Error
@@ -77,6 +79,8 @@ class MeanSquaredError(Metric):
 
 
 class Accuracy(Metric):
+    """Class for Accuracy. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Accuracy
@@ -92,6 +96,8 @@ class Accuracy(Metric):
 
 
 class MacroPrecision(Metric):
+    """Class for MacroPrecision. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Precision
@@ -117,6 +123,8 @@ class MacroPrecision(Metric):
 
 
 class MacroRecall(Metric):
+    """Class for MacroRecall. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Recall
@@ -144,6 +152,8 @@ class MacroRecall(Metric):
 
 
 class MeanAbsoluteError(Metric):
+    """Class for MeanAbsoluteError. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Mean Absolute Error
@@ -159,6 +169,8 @@ class MeanAbsoluteError(Metric):
 
 
 class Rsquared(Metric):
+    """Class for Rsquared. Inherits from Metric
+    """
 
     def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the R^2
