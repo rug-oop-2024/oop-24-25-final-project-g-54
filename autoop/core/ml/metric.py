@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import Any
 import numpy as np
 
 METRICS = [
@@ -43,7 +42,6 @@ def get_metric(name: str) -> "Metric":
 class Metric(ABC):
     """Base class for all metrics."""
 
-    @abstractmethod
     def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the metric value.
 
@@ -54,6 +52,10 @@ class Metric(ABC):
         Returns:
             float: Calculated metric value
         """
+        return self.evaluate(y_ground, y_pred)
+
+    @abstractmethod
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray,) -> float:
         pass
 
 # add here concrete implementations of the Metric class
@@ -61,7 +63,7 @@ class Metric(ABC):
 
 class MeanSquaredError(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Mean Squared Error
 
         Args:
@@ -76,7 +78,7 @@ class MeanSquaredError(Metric):
 
 class Accuracy(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Accuracy
 
         Args:
@@ -91,7 +93,7 @@ class Accuracy(Metric):
 
 class MacroPrecision(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Precision
 
         Args:
@@ -116,7 +118,7 @@ class MacroPrecision(Metric):
 
 class MacroRecall(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Recall
 
         Args:
@@ -133,7 +135,9 @@ class MacroRecall(Metric):
             true_positive = np.sum((y_pred == cls) & (y_ground == cls))
             actual_positive = np.sum(y_ground == cls)
 
-            recall = true_positive / actual_positive if actual_positive > 0 else 0.0
+            recall = (
+                true_positive / actual_positive if actual_positive > 0 else 0.0
+            )
             recall_scores.append(recall)
 
         return np.mean(recall_scores)
@@ -141,7 +145,7 @@ class MacroRecall(Metric):
 
 class MeanAbsoluteError(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the Mean Absolute Error
 
         Args:
@@ -156,7 +160,7 @@ class MeanAbsoluteError(Metric):
 
 class Rsquared(Metric):
 
-    def __call__(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
+    def evaluate(self, y_ground: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculates the R^2
 
         Args:

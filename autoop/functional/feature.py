@@ -11,6 +11,7 @@ def detect_feature_types(dataset: Dataset) -> List[Feature]:
     Returns:
         List[Feature]: List of features with their types.
     """
+
     df = dataset.read()
     features = []
 
