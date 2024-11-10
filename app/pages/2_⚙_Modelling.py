@@ -89,8 +89,8 @@ if datasets:
             selected_model_name = st.selectbox(
                 "Please select a regression model", list(
                     regression_models.keys()
-                    )
                 )
+            )
             st.write(f"Selected Model: {selected_model_name}")
             st.write("### Select Metrics for Regression")
             for metric in regression_metrics:
