@@ -1,6 +1,7 @@
 # In artifact.py
 from typing import Optional
 import base64
+from copy import deepcopy
 
 
 class Artifact:
@@ -42,14 +43,79 @@ class Artifact:
             id: The unique identifier for the artifact.
             metadata: Additional metadata as key-value pairs.
         """
-        self.name = name
-        self.type = type
-        self.asset_path = asset_path
-        self.data = data
-        self.tags = tags if tags is not None else []
-        self.version = version
-        self.id = self.generate_id()
-        self.metadata = metadata if metadata is not None else {}
+        self._name = name
+        self._type = type
+        self._asset_path = asset_path
+        self._data = data
+        self._tags = tags if tags is not None else []
+        self._version = version
+        self._id = self.generate_id()
+        self._metadata = metadata if metadata is not None else {}
+
+    @property
+    def name(self) -> str:
+        """
+        Getter method for self._name
+        """
+        return self._name
+
+    @property
+    def type(self) -> str:
+        """
+        Getter method for self._type
+        """
+        return self._type
+
+    @property
+    def asset_path(self) -> str:
+        """
+        Getter method for self._asset_path
+        """
+        return self._asset_path
+
+    @property
+    def data(self) -> str:
+        """
+        Getter method for self._data
+        """
+        return self._data
+
+    @property
+    def tags(self) -> list:
+        """
+        Getter method for self._data
+
+        Returns:
+            Returns a deepcopy of the tags.
+        """
+        return deepcopy(self._tags)
+
+    @property
+    def version(self) -> str:
+        """
+        Getter method for self._version
+        """
+        return self._version
+
+    @property
+    def id(self) -> str:
+        """
+        Getter method for self._id
+        """
+        return self._id
+
+    @property
+    def metadata(self) -> dict:
+        """
+        Getter method for self._metadata
+
+        Returns:
+            Returns a deepcopy of the metadata.
+        """
+
+        return deepcopy(self._metadata)
+    
+    
 
     def read(self) -> bytes:
         """
