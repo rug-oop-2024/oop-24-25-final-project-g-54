@@ -17,7 +17,7 @@ class ArtifactRegistry():
     """
     def __init__(self,
                  database: Database,
-                 storage: Storage):
+                 storage: Storage) -> None:
         """
         Initializes the ArtifactRegistry.
 
@@ -28,7 +28,7 @@ class ArtifactRegistry():
         self._database = database
         self._storage = storage
 
-    def register(self, artifact: Artifact):
+    def register(self, artifact: Artifact) -> None:
         """
         Registers an artifact by saving its data in
         storage and its metadata in the database.
@@ -98,7 +98,7 @@ class ArtifactRegistry():
             type=data["type"],
         )
 
-    def delete(self, artifact_id: str):
+    def delete(self, artifact_id: str) -> None:
         """
         Deletes an artifact by its ID removing its data
         from storage and metadata from the database.
@@ -120,7 +120,7 @@ class AutoMLSystem:
     """
     _instance = None
 
-    def __init__(self, storage: LocalStorage, database: Database):
+    def __init__(self, storage: LocalStorage, database: Database) -> None:
         """
         Initializes the AutoML system with storage and database components.
 
@@ -134,7 +134,7 @@ class AutoMLSystem:
         self._registry = ArtifactRegistry(database, storage)
 
     @staticmethod
-    def get_instance():
+    def get_instance() -> "AutoMLSystem":
         """
         Creates and retrieves the singleton instance of the AutoMLSystem.
 
@@ -144,7 +144,7 @@ class AutoMLSystem:
 
         Returns:
             AutoMLSystem: The singleton instance of the AutoML system.
-    """
+        """
         if AutoMLSystem._instance is None:
             AutoMLSystem._instance = AutoMLSystem(
                 LocalStorage("./assets/objects"),
@@ -156,7 +156,7 @@ class AutoMLSystem:
         return AutoMLSystem._instance
 
     @property
-    def registry(self):
+    def registry(self) -> "ArtifactRegistry":
         """
         Getter method for self._registry
 
