@@ -48,7 +48,7 @@ if saved_pipelines:
         metrics = (
             [type(m).__name__ for m in loaded_pipeline._metrics]
             if loaded_pipeline._metrics else ["None"]
-            )
+        )
         split_ratio = loaded_pipeline._split
 
         col1, col2, col3, col4 = st.columns(4)
@@ -91,11 +91,11 @@ if saved_pipelines:
             if not all(
                     feature in input_data.columns
                     for feature in input_feature_names
-                 ):
+            ):
                 st.error(
                     f"Uploaded file must contain the following columns: "
                     f"{', '.join(input_feature_names)}"
-                    )
+                )
             else:
                 input_data = input_data[input_feature_names]
                 results = loaded_pipeline.execute()
