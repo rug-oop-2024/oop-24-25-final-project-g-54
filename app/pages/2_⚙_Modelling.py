@@ -156,11 +156,9 @@ if datasets:
             st.write(f"- **Target Feature**: {target_feature_name}")
         with col3:
             st.write("#### Metrics")
-            st.write(
-                f"- **Selected Metrics**: {', '.join(selected_metrics)
-                                           if selected_metrics
-                                           else 'None'}"
-                                           )
+            metric_text = ', '.join(selected_metrics) if selected_metrics \
+                else 'None'
+            st.write(f"- **Selected Metrics**: {metric_text}")
             st.write("#### Split Ratio")
             st.write(f"- **Training/Test Split**: {split_ratio}")
 
