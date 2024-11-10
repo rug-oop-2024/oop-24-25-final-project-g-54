@@ -1,3 +1,7 @@
+"""
+This package contains the classification models.
+"""
+
 from autoop.core.ml.model.classification.k_nearest_nerighbors import KNN
 from autoop.core.ml.model.classification.mlpclassifier import (
     Neural_network_classifier

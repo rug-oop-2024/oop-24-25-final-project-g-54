@@ -20,7 +20,7 @@ class Model(Artifact, ABC):
     _param: dict = PrivateAttr(default=dict)
     _type: Literal["classification", "regression"]
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         """
         Initializes the model with specified parameters.
 
