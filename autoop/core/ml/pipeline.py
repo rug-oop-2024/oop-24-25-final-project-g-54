@@ -24,8 +24,8 @@ class Pipeline():
                  model: Model,
                  input_features: List[Feature],
                  target_feature: Feature,
-                 split=0.8,
-                 ):
+                 split: float = 0.8,
+                 ) -> None:
         """
         Initializes the Pipeline with the
         provided dataset, model, features,
@@ -52,7 +52,7 @@ class Pipeline():
         self._artifacts = {}
         self._split = split
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns a string representation of the pipeline configuration.
 
@@ -70,7 +70,7 @@ Pipeline(
 """
 
     @property
-    def model(self):
+    def model(self) -> "Model":
         """
         Getter method for self._model
         """
@@ -99,13 +99,13 @@ Pipeline(
         }
         artifacts.append(
             Artifact(name="pipeline_config", data=pickle.dumps(pipeline_data))
-            )
+        )
         artifacts.append(
             self._model.to_artifact(name=f"pipeline_model_{self._model.type}")
-            )
+        )
         return artifacts
 
-    def _register_artifact(self, name: str, artifact) -> None:
+    def _register_artifact(self, name: str, artifact: "Artifact") -> None:
         """
         Registers an artifact by adding
         it to the internal artifacts dictionary.
@@ -137,7 +137,7 @@ Pipeline(
         self._output_vector = target_data
         self._input_vectors = [
             data for (feature_name, data, artifact) in input_results
-            ]
+        ]
 
     def _split_data(self) -> None:
         """
@@ -148,17 +148,17 @@ Pipeline(
         split = self._split
         self._train_X = [
             vector[:int(split * len(vector))] for vector in self._input_vectors
-            ]
+        ]
         self._test_X = [
             vector[int(split * len(vector)):] for vector in self._input_vectors
-            ]
+        ]
         self._train_y = self._output_vector[
             :int(split * len(self._output_vector))
-            ]
+        ]
 
         self._test_y = self._output_vector[
             int(split * len(self._output_vector)):
-            ]
+        ]
 
     def _compact_vectors(self, vectors: List[np.array]) -> np.array:
         """
@@ -243,7 +243,8 @@ Pipeline(
             "split": self._split,
             "metrics": self._metrics,
             "model": self._model
-            })
+            }
+        )
 
         serialized_data = data
 
@@ -260,7 +261,7 @@ Pipeline(
         return artifact
 
     @staticmethod
-    def load(load_path: str):
+    def load(load_path: str) -> "Pipeline":
         """
         Loads a pipeline from the specified path.
 
