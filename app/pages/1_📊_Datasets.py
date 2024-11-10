@@ -47,4 +47,4 @@ if datasets:
         automl.registry.delete(selected_dataset.id)
         st.success(f"Dataset '{selected}' deleted successfully.")
         time.sleep(1)
-        st.rerun() 
+        st.rerun()
