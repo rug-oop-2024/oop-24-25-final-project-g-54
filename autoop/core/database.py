@@ -7,8 +7,15 @@ from autoop.core.storage import Storage
 
 
 class Database():
+    """Database class
+    """
+    def __init__(self, storage: Storage) -> None:
+        """Initializer method
 
-    def __init__(self, storage: Storage):
+        Args:
+            storage (Storage): An instance of the Storage class that
+                               provides methods to load and manage data.
+        """
         self._storage = storage
         self._data = {}
         self._load()
