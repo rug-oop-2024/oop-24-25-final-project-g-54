@@ -92,10 +92,10 @@ if saved_pipelines:
                     feature in input_data.columns
                     for feature in input_feature_names
                  ):
-                st.error(f"Uploaded file must contain the following columns: {
-                    ', '.join(input_feature_names)
-                    }"
-                )
+                st.error(
+                    f"Uploaded file must contain the following columns: "
+                    f"{', '.join(input_feature_names)}"
+                    )
             else:
                 input_data = input_data[input_feature_names]
                 results = loaded_pipeline.execute()

@@ -21,7 +21,7 @@ if uploaded_file:
     new_dataset = Dataset.from_dataframe(
         data=data, name=file_name, asset_path=asset_path,
         version="1.0.0"
-        )
+    )
 
     if st.button("Upload/Save Dataset"):
         automl.registry.register(new_dataset)

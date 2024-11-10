@@ -145,10 +145,11 @@ if datasets:
             st.write("#### Dataset")
             st.write(f"- **Name**: {selected_dataset_name}")
             st.write("#### Model")
-            st.write(f"- **Type**: {'Regression'
-                                    if st.session_state.regression_selected
-                                    else 'Classification'}"
-                     )
+            st.write(
+                f"- **Type**: {'Regression'
+                               if st.session_state.regression_selected
+                               else 'Classification'}"
+                               )
             st.write(f"- **Model**: {selected_model_name}")
         with col2:
             st.write("#### Features")
@@ -156,10 +157,11 @@ if datasets:
             st.write(f"- **Target Feature**: {target_feature_name}")
         with col3:
             st.write("#### Metrics")
-            st.write(f"- **Selected Metrics**: {', '.join(selected_metrics)
-                                                if selected_metrics
-                                                else 'None'}"
-                     )
+            st.write(
+                f"- **Selected Metrics**: {', '.join(selected_metrics)
+                                           if selected_metrics
+                                           else 'None'}"
+                                           )
             st.write("#### Split Ratio")
             st.write(f"- **Training/Test Split**: {split_ratio}")
 
