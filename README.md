@@ -183,3 +183,4 @@ If you add extra features, please indicate them below:
 |-------------------------------------- |--------------|----------------------|---------|-----|
 | `ST/deployment/management/delete`     | FN           | Matthias             |    X    |     |
 | `ST/datasets/management/delete`       | FN           | Matthias             |    X    |     |
+| `ST/deployment/management/download`   | FN           | Matthias             |    X    |     |
