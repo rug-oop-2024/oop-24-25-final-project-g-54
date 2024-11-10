@@ -145,11 +145,10 @@ if datasets:
             st.write("#### Dataset")
             st.write(f"- **Name**: {selected_dataset_name}")
             st.write("#### Model")
-            st.write(
-                f"- **Type**: "
-                f" {'Regression' if st.session_state.regression_selected
-                    else 'Classification'}"
-            )
+            model_text = 'Regression' \
+                if st.session_state.regression_selected \
+                else 'Classification'
+            st.write(f"- **Type**: {model_text}")
             st.write(f"- **Model**: {selected_model_name}")
         with col2:
             st.write("#### Features")
