@@ -8,7 +8,7 @@ class NotFoundError(Exception):
     """
     Exception raised when a specified path is not found.
     """
-    def __init__(self, path) -> None:
+    def __init__(self, path: str) -> None:
         """
         Initializes the error with the missing path.
 

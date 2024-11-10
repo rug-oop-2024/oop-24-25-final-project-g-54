@@ -114,8 +114,6 @@ class Artifact:
         """
 
         return deepcopy(self._metadata)
-    
-    
 
     def read(self) -> bytes:
         """
